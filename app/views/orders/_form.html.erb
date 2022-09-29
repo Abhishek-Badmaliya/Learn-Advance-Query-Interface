@@ -1,0 +1,53 @@
+<div class = "container" >
+
+  <% if @order.errors.any? %>
+    <h4> The following errors prevented the order details from being saved ! </h4>
+    <ul>
+      <% @order.errors.full_messages.each do |msg| %>
+        <li class = "text-danger"> <%= msg %> </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= form_with(model:@order, local: true, data: {turbo: false}) do |f| %>
+
+    <div class = "field form-group" >
+      <strong><%= f.label :quantity %></strong>
+      <%= f.text_field :quantity, class:"form-control" %>
+    </div><br>
+
+    <div class = "field form-group" >
+      <strong><%= f.label :total_price %></strong>
+      <%= f.text_area :total_price, class:"form-control" %>
+    </div><br>
+
+    <div class = "field form-group" >
+      <strong><%= f.label :product_id %></strong>
+      <%= f.number_field :product_id, class:"form-control" %>
+    </div><br>
+
+    <div class = "field form-group" >
+      <strong><%= f.label :order_status %></strong>
+      <%= f.select :product_status, ['Booked','Cancelled'], class:"form-control" %>
+    </div><br>
+
+    <div class = "field form-group" >
+      <strong><%= f.label :customer_id %></strong>
+      <%= f.text_field :customer_id, class:"form-control" %>
+    </div><br>
+
+    <div class="text-center">
+      <div class = "action" >
+        <%= f.submit "Submit", class:"btn btn-success" %>
+      </div>
+    </div><br>
+
+    <div class="text-center">
+      <div class = "field form-group" >
+        <%= link_to 'Dismiss', { controller: 'orders', action: 'index'}, class: "btn btn-danger" %>
+      </div>
+    </div>
+
+  <% end %>
+
+</div>

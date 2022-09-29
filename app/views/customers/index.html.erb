@@ -1,0 +1,33 @@
+<h2 class = "text-center mt-4" >List of customers</h2><br>
+<%= link_to "Add New customer", new_customer_path, class:"btn btn-secondary" %><br><br>
+
+<table class = "table table-bordered">
+  <thead class = "table-light text-center">
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Phone Number</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody class = "text-center">
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= customer.cust_fname %></td>
+        <td><%= customer.cust_lname %></td>
+        <td><%= customer.cust_email %></td>
+        <td><%= customer.cust_phone_number %></td>
+        <div>
+          <td>
+            <div class="btn-group" role="group">
+              <%= link_to 'Show', customer_path(customer), class: "text-decoration-none btn btn-info" %>
+              <%= link_to 'Edit', edit_customer_path(customer), class: "text-decoration-none btn btn-dark" %>
+              <%= button_to 'Delete', customer_path(customer), method: :delete, data: { confirm: "Are you sure you want to delete?" }, class: "btn btn-danger" %>
+            </div>
+          </td>
+        </div>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

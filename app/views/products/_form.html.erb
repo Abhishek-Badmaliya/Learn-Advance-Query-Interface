@@ -1,0 +1,58 @@
+<div class = "container" >
+
+  <% if @product.errors.any? %>
+    <h4> The following errors prevented the product details from being saved ! </h4>
+    <ul>
+      <% @product.errors.full_messages.each do |msg| %>
+        <li class = "text-danger"> <%= msg %> </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= form_with(model:@product, local: true, data: {turbo: false}) do |f| %>
+
+    <div class = "field form-group" >
+      <strong><%= f.label :product_title %></strong>
+      <%= f.text_field :title, class:"form-control" %>
+    </div><br>
+
+    <div class = "field form-group" >
+      <strong><%= f.label :description %></strong>
+      <%= f.text_area :description, class:"form-control" %>
+    </div><br>
+
+    <div class = "field form-group" >
+      <strong><%= f.label :product_price %></strong>
+      <%= f.number_field :price, class:"form-control" %>
+    </div><br>
+
+    <div class = "field form-group" >
+      <strong><%= f.label :capacity %></strong>
+      <%= f.text_field :capacity, class:"form-control" %>
+    </div><br>
+
+    <div class = "field form-group" >
+      <strong><%= f.label :is_active %></strong>
+      <%= f.select :is_active, options_for_select([true,false]), class:"form-control" %>
+    </div><br>
+
+    <div class = "field form-group" >
+      <strong><%= f.label :product_status %></strong>
+      <%= f.select :status, Product.statuses.keys, class:"form-control" %>
+    </div><br>
+
+    <div class="text-center">
+      <div class = "action" >
+        <%= f.submit "Submit", class:"btn btn-success" %>
+      </div>
+    </div><br>
+
+    <div class="text-center">
+      <div class = "field form-group" >
+        <%= link_to 'Dismiss', { controller: 'products', action: 'index'}, class: "btn btn-danger" %>
+      </div>
+    </div>
+
+  <% end %>
+
+</div>
