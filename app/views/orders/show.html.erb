@@ -8,22 +8,42 @@
 
   <p class = "lead" >
     <label><strong>Total Price : </strong></label>
-    <%= @order.total_price %>
+    <%= (@order.quantity)*(@order.product.price) %>
   </p>
 
   <p class = "lead" >
-    <label><strong>Product ID : </strong></label>
-    <%= @order.product_id %>
+    <label><strong>Order Status : </strong></label>
+    <%= @order.order_status %>
+  </p>
+
+  <p class = "lead" >
+    <label><strong>Customer Name : </strong></label>
+    <%= @order.customer.cust_fname + " " + @order.customer.cust_lname %>
+  </p>
+
+  <p class = "lead" >
+    <label><strong>Customer Email : </strong></label>
+    <%= @order.customer.cust_email %>
+  </p>
+
+  <p class = "lead" >
+    <label><strong>Customer Phone Number : </strong></label>
+    <%= @order.customer.cust_phone_number %>
+  </p>
+
+  <p class = "lead" >
+    <label><strong>Product Name : </strong></label>
+    <%= @order.product.title %>
+  </p>
+
+  <p class = "lead" >
+    <label><strong>Product Price : </strong></label>
+    <%= @order.product.price %>
   </p>
 
   <p class = "lead" >
     <label><strong>Product Status : </strong></label>
-    <%= @order.product_status %>
-  </p>
-
-  <p class = "lead" >
-    <label><strong>Customer ID : </strong></label>
-    <%= @order.customer_id %>
+    <%= @order.product.status %>
   </p>
 
   <div class = "text-center"><br>

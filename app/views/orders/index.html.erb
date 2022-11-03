@@ -1,4 +1,12 @@
 <h2 class = "text-center mt-4" >List of Orders</h2><br>
+
+<%= form_with url: "/orders", :method => 'get' do |f| %>
+  <p>
+    <%= f.select :search, Order.order_statuses.keys %>
+    <%= f.submit "Search" %>
+  </p>
+<% end %><br>
+
 <%= link_to "Add New order", new_order_path, class:"btn btn-secondary" %><br><br>
 
 <table class = "table table-bordered">
@@ -8,7 +16,8 @@
       <th>Total Price</th>
       <th>Product ID</th>
       <th>Status</th>
-      <th>Customer ID</th>
+      <th>Customer Name</th>
+      <th>Customer Email</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -18,8 +27,9 @@
         <td><%= order.quantity %></td>
         <td><%= order.total_price %></td>
         <td><%= order.product_id %></td>
-        <td><%= order.product_status %></td>
-        <td><%= order.customer_id %></td>
+        <td><%= order.order_status %></td>
+        <td><%= order.customer.cust_fname %> <%= order.customer.cust_lname %></td>
+        <td><%= order.customer.cust_email %></td>
         <div>
           <td>
             <div class="btn-group" role="group">

@@ -17,23 +17,23 @@
     </div><br>
 
     <div class = "field form-group" >
-      <strong><%= f.label :total_price %></strong>
-      <%= f.text_area :total_price, class:"form-control" %>
+      <strong><%= f.label :price %></strong>
+      <%= f.text_field :price, class:"form-control" %>
     </div><br>
 
     <div class = "field form-group" >
       <strong><%= f.label :product_id %></strong>
-      <%= f.number_field :product_id, class:"form-control" %>
+      <%= f.select :product_id, Product.all.map { |p| [p.title, p.id] }, class:"form-control" %>
     </div><br>
 
     <div class = "field form-group" >
       <strong><%= f.label :order_status %></strong>
-      <%= f.select :product_status, ['Booked','Cancelled'], class:"form-control" %>
+      <%= f.select :order_status, Order.order_statuses.keys, class:"form-control" %>
     </div><br>
 
     <div class = "field form-group" >
       <strong><%= f.label :customer_id %></strong>
-      <%= f.text_field :customer_id, class:"form-control" %>
+      <%= f.select :customer_id, Customer.all.map { |t| [t.cust_fname+ " " +t.cust_lname,t.id] } ,class:" form-control" %>
     </div><br>
 
     <div class="text-center">

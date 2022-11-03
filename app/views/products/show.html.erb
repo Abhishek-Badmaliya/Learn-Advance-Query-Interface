@@ -1,10 +1,32 @@
-<p style="color: green"><%= notice %></p>
+<div class = "container-fluid" >
+  <h2 class = "text-center mt-4" >Product Details</h2><hr>
+  
+  <p class = "lead" >
+    <label><strong>Product Title : </strong></label>
+    <%= @product.title %>
+  </p>
 
-<%= render @product %>
+  <p class = "lead" >
+    <label><strong>Description : </strong></label>
+    <%= @product.description %>
+  </p>
 
-<div>
-  <%= link_to "Edit this product", edit_product_path(@product) %> |
-  <%= link_to "Back to products", products_path %>
+  <p class = "lead" >
+    <label><strong>Product Price : </strong></label>
+    <%= @product.price %>
+  </p>
 
-  <%= button_to "Destroy this product", @product, method: :delete %>
+  <p class = "lead" >
+    <label><strong>Capacity : </strong></label>
+    <%= @product.capacity %>
+  </p>
+
+  <p class = "lead" >
+    <label><strong>Product Status : </strong></label>
+    <%= @product.status %>
+  </p>
+
+  <div class = "text-center"><br>
+    <%= link_to 'Back', { controller: 'products', action: 'index'}, class: "btn btn-primary" %>
+  </div>
 </div>
