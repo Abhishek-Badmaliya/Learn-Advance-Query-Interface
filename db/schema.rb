@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_29_211228) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_03_092656) do
   create_table "customers", force: :cascade do |t|
     t.string "cust_fname"
     t.string "cust_lname"
@@ -18,6 +18,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_29_211228) do
     t.string "cust_phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "lock_version"
   end
 
   create_table "orders", force: :cascade do |t|
